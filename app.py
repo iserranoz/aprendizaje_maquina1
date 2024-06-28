@@ -1,10 +1,19 @@
 import streamlit as st
 import pandas as pd
-import joblib
 from utils import *
 import matplotlib.pyplot as plt
 
+import subprocess
+import sys
 
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+try:
+    import joblib
+except ImportError:
+    install('joblib')
+    import joblib
 
 st.set_page_config(page_title='UP Aprendizaje de Maquina 1',page_icon="assets/logo2.png",layout='wide')
 
